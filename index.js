@@ -30,14 +30,16 @@ app.post("/scrap", async (req, res) => {
     // Step 1: Convert city name to lat/lng using Geocoding API
     const geoResp = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
       params: {
-        address: location,
+        address: encodeURIComponent(location),
+        region: "in",
         key: process.env.GOOGLE_MAPS_API_KEY,
       },
     });
 
     const geoData = geoResp.data;
     if (!geoData.results.length) {
-      return res.status(404).json({ error: "Location not found" });
+      return res.status(404).json({ error: "Location not found", details: geoData
+      });
     }
 
     const { lat, lng } = geoData.results[0].geometry.location;
