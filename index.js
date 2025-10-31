@@ -204,11 +204,11 @@ app.post("/gemini", async (req, res) => {
   try {
     const data = req.body
     if (!data) {
-      return res.json(400).json({"error": "provide data in body"})
+      return res.status(400).json({"error": "provide data in body"})
     }
     const proce = await generateMarkdownWithGemini(data)
     if (proce) {
-      res.status(200).json({"results": proce})
+      return res.status(200).json({"results": proce})
     }
   }
   catch (e) {
