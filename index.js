@@ -202,7 +202,7 @@ app.post("/research", async (req, res) => {
 
 app.post("/gemini", async (req, res) => {
   try {
-    const data = req.body()
+    const data = req.body
     if (!data) {
       return res.json(400).json({"error": "provide data in body"})
     }
