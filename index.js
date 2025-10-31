@@ -16,7 +16,7 @@ const GOOGLE_PLACES_API = "https://maps.googleapis.com/maps/api/place/nearbysear
 const PERPLEXITY_API = "https://api.perplexity.ai/chat/completions";
 
 const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY!,
+  apiKey: process.env.GEMINI_API_KEY,
 });
 
 const generateMarkdownWithGemini = async (
