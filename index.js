@@ -20,8 +20,8 @@ const ai = new GoogleGenAI({
 });
 
 const generateMarkdownWithGemini = async (
-  data: any
-): Promise<string> => {
+  data
+) => {
   const prompt = `
 You are a technical writer.  
 Generate a well-structured Markdown report from the following JSON data.
@@ -68,6 +68,7 @@ Return only the Markdown content.
   // Depending on SDK version, you may need: response.output_text or response.candidates[0].content.parts[0].text
   return response.text || "No content generated.";
 };
+
 /**
  * POST /scrap
  * Body: {
